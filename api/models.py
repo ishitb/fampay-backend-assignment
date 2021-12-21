@@ -5,7 +5,7 @@ import uuid
 
 class YoutubeVideo(models.Model) :
     id              =   models.UUIDField(primary_key = True, default = uuid.uuid4, editable = False)
-    video_id        =   models.CharField(max_length = 500, null = True, blank = True)
+    video_id        =   models.CharField(max_length = 500, unique = True, null = True, blank = True)
     title           =   models.CharField(max_length = 500, null = True, blank = True)
     channel_id      =   models.CharField(max_length = 500, null = True, blank = True)
     channel_title   =   models.CharField(max_length = 500, null = True, blank = True)
