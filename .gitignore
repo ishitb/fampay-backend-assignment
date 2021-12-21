@@ -4,3 +4,4 @@ venv
 */migrations
 db.sqlite3
 .env
+.bash_aliases
