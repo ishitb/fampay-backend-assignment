@@ -1,3 +1,4 @@
+from django.shortcuts import render
 from rest_framework.response import Response
 from .models import YoutubeVideo, APIKey
 from .serializers import YoutubeVideoSerializer, APIKeySerializer
@@ -19,3 +20,9 @@ class YoutubeVideoView (generics.ListAPIView) :
 class APIKeyViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.CreateModelMixin, mixins.DestroyModelMixin, mixins.UpdateModelMixin, mixins.RetrieveModelMixin) :
     serializer_class = APIKeySerializer
     queryset = APIKey.objects.all()
+
+def videos_template(request) :
+    videos = YoutubeVideo.objects.all()
+    api_keys = APIKey.objects.filter(expired = False)
+
+    return render(request, 'videos.html', {'videos': videos, 'keys_available': len(api_keys) > 1})
