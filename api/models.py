@@ -23,5 +23,5 @@ class YoutubeVideo(models.Model) :
 class APIKey(models.Model) :
     key             =   models.CharField(max_length = 500, null = True, blank = True)
     name            =   models.CharField(max_length = 500, null = True, blank = True)
-    created         =   models.DateTimeField(default = datetime.now())
-    last_expired    =   models.DateTimeField(null = True, blank = True)
+    created         =   models.DateTimeField(default = datetime.utcnow())
+    expired         =   models.BooleanField(default = False, blank = True, null = True)

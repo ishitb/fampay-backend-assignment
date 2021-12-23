@@ -9,7 +9,7 @@ query = os.getenv('query') or 'sports'
 
 def getVideos (api_key: str, max_results: int = 20) -> Dict:
     url = 'https://www.googleapis.com/youtube/v3/search'
-    
+
     params = {
         'key'           :   api_key,
         'part'          :   'snippet',
@@ -27,6 +27,7 @@ def getVideos (api_key: str, max_results: int = 20) -> Dict:
         data['videos'] = response_json['items']
 
     else :
+        print(response.json())
         data['error_code'] = response.json()['error']['code']
         data['error_message'] = response.json()['error']['message']
 
