@@ -2,7 +2,7 @@ from celery import shared_task
 from .utils import getVideos, saveVideos
 from .models import APIKey
 
-# @shared_task
+@shared_task
 def get_videos () :
     api_keys = APIKey.objects.all()
     task_done = False
@@ -17,7 +17,7 @@ def get_videos () :
         if data['error_code'] :
             print(f'Error {data["error_code"]}:', data['error_message'])
 
-            if data['error_code'] == 403 :
+            if data['error_code'] == 400 :
                 APIKey.objects.update_or_create(
                     id = api_key.id,
                     defaults = {

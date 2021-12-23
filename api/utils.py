@@ -19,7 +19,7 @@ def getVideos (api_key: str, max_results: int = 20) -> Dict:
         'type'          :   'video'
     }
     
-    data = {}
+    data = {'error_code': 0}
 
     response = requests.get(url, params = params)
     if response.status_code == 200 :
