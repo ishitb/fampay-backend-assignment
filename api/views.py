@@ -22,7 +22,7 @@ class APIKeyViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.Creat
     queryset = APIKey.objects.all()
 
 def videos_template(request) :
-    videos = YoutubeVideo.objects.all()
+    videos = YoutubeVideo.objects.all().order_by('-published')
     api_keys = APIKey.objects.filter(expired = False)
 
     return render(request, 'videos.html', {'videos': videos, 'keys_available': len(api_keys) > 1})

@@ -16,7 +16,8 @@ def getVideos (api_key: str, max_results: int = 20) -> Dict:
         'q'             :   query,
         'maxResults'    :   max_results,
         'order'         :   'date',
-        'type'          :   'video'
+        'type'          :   'video',
+        'publishedAfter':   '2021-01-01T00:00:00Z'
     }
     
     data = {'error_code': 0}
